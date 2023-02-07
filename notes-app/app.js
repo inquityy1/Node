@@ -5,7 +5,7 @@ const getNotes = require('./notes.js');
 const msg = chalk.underline(getNotes('Your notes...'));
 console.log(msg);
 
-const greenMsg = chalk.green.inverse.bold('Success!');
+const greenMsg = chalk.red.inverse.bold('Error!');
 console.log(greenMsg);
 
 // console.log(validator.isURL('https/mead.io'));
