@@ -33,9 +33,9 @@ app.get('/about', (req, res) => {
 
 app.get('/help', (req, res) => {
   res.render('help', {
-    helpText: 'Help',
     title: 'Help',
     name: 'Nebojsa Nikolic',
+    helpText: 'Some usefull text',
   });
 });
 
