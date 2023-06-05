@@ -1,20 +1,53 @@
-// CRUD create read update delete
+// main().catch(console.error);
+const { MongoClient } = require("mongodb");
 
-const mongodb = require('mongodb');
-const MongoClient = mongodb.MongoClient;
+// or as an es module:
+// import { MongoClient } from 'mongodb'
 
-const connectionURL = 'mongodb://127.0.0.1:27017';
-const databaseName = 'task-manager';
+// Connection URL
+const url = "mongodb://127.0.0.1:27017";
 
-MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
-    if (error) {
-        return console.log('Unable to connect to database!');
+const client = new MongoClient(url);
+
+// Database Name
+const dbName = "task-manager";
+
+async function main() {
+  // Use connect method to connect to the server
+  await client.connect();
+  console.log("Connected successfully to server");
+  const db = client.db(dbName);
+  const collection = db.collection("documents");
+  collection.insertMany(
+    [
+      {
+        description: "Clean the house",
+        status: true,
+      },
+      {
+        description: "Renew inspection",
+        status: false,
+      },
+      {
+        description: "Pot plants",
+        status: false,
+      },
+    ],
+    (error, result) => {
+      if (error) {
+        return console.log("Unable to insert tasks!");
+      }
+
+      console.log(result.ops);
     }
+  );
 
-    const db = client.db(databaseName);
+  // the following code examples can be pasted here...
 
-    db.collection('users').insertOne({
-        name: 'Nebojsa',
-        age: 22,
-    });
-});
+  return "done.";
+}
+
+main()
+  .then(console.log)
+  .catch(console.error)
+  .finally(() => client.close());
