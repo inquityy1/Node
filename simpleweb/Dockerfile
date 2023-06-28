@@ -1,8 +1,11 @@
 # Specify a base image
-FROM node:18.16-alpine3.18
+FROM node:16-alpine
 
 # Install some dependencies
-RUN npm install
+COPY ./ ./
+RUN rm -rf node_modules package-lock.json && \
+    npm cache clean --force && \
+    yarn install
 
 # Default command
 CMD ["npm", "start"]
