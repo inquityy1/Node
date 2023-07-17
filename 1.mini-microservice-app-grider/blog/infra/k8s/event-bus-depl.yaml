@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: event-bus
-          image: nebojsa/event-bus
+          image: inquityy/event-bus
 ---
 apiVersion: v1
 kind: Service
