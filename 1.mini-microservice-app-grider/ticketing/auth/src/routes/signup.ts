@@ -16,6 +16,9 @@ router.post(
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
+        // This is javascript land (not ts)
+        // const error = new Error('Invalid email or password')
+        // error.reasons = errors.array();
       throw new Error('Invalid email or password');
     };
 
