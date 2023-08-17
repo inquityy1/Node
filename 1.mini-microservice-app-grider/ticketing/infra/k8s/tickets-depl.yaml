@@ -14,8 +14,10 @@ spec:
     spec:
       containers:
         - name: tickets
-          image: cygnetops/tickets
+          image: inquityy/tickets
           env:
+            - name: MONGO_URI
+              value: "mongodb://tickets-mongo-srv:27017/tickets"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:

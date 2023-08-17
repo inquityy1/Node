@@ -8,7 +8,7 @@ build:
   local:
     push: false
   artifacts:
-    - image: cygnetops/auth
+    - image: inquityy/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -16,7 +16,7 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: cygnetops/ticketing-client
+    - image: inquityy/ticketing-client
       context: client
       docker:
         dockerfile: Dockerfile
@@ -24,7 +24,7 @@ build:
         manual:
           - src: "**/*.js"
             dest: .
-    - image: cygnetops/tickets
+    - image: inquityy/tickets
       context: tickets
       docker:
         dockerfile: Dockerfile
