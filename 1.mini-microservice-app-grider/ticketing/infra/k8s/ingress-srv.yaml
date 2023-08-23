@@ -17,6 +17,13 @@ spec:
                 name: auth-srv # Modify the service reference
                 port:
                   number: 3000
+          - path: /api/tickets/?(.*)
+            pathType: Prefix # Add this line to specify the path type
+            backend:
+              service:
+                name: tickets-srv # Modify the service reference
+                port:
+                  number: 3000
           - path: /?(.*)
             pathType: Prefix # Add this line to specify the path type
             backend:

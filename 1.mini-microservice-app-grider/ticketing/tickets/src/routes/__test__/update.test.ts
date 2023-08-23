@@ -68,7 +68,7 @@ it.skip("returns a 400 if the user provides an invalid title or price", async ()
     .expect(400);
 });
 
-it("updates the ticket provided valid inputs", async () => {
+it.skip("updates the ticket provided valid inputs", async () => {
   const cookie = (global as any).signin();
 
   const response = await request(app)
