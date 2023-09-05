@@ -24,6 +24,13 @@ spec:
                 name: tickets-srv # Modify the service reference
                 port:
                   number: 3000
+          - path: /api/orders/?(.*)
+            pathType: Prefix # Add this line to specify the path type
+            backend:
+              service:
+                name: orders-srv # Modify the service reference
+                port:
+                  number: 3000
           - path: /?(.*)
             pathType: Prefix # Add this line to specify the path type
             backend:
@@ -31,3 +38,4 @@ spec:
                 name: client-srv # Modify the service reference
                 port:
                   number: 3000
+                  # ^ this one needs to be last
